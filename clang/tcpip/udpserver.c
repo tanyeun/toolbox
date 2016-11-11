@@ -55,13 +55,18 @@ int main(int argc, char **argv) {
     /* 
      * gethostbyaddr: determine who sent the datagram
      */
-    hostp = gethostbyaddr((const char *)&clientaddr.sin_addr.s_addr, 
+    hostp = gethostbyaddr(&clientaddr.sin_addr.s_addr, 
 			  sizeof(clientaddr.sin_addr.s_addr), AF_INET);
-    if (hostp == NULL)
-      error("ERROR on gethostbyaddr");
+    if (hostp == NULL){
+	  hostp = malloc(sizeof(struct hostent*));
+	  hostp->h_name = malloc(sizeof(char*)*10);
+	  strcpy(hostp->h_name, "UNKNOWN");
+	}
     hostaddrp = inet_ntoa(clientaddr.sin_addr);
-    if (hostaddrp == NULL)
-      error("ERROR on inet_ntoa\n");
+    if (hostaddrp == NULL){
+	  hostaddrp = malloc(sizeof(char*)*10);
+	  strcpy(hostp->h_name, "UNKNOWN");
+	}
 
     printf("server received datagram from %s (%s)\n", 
 	        hostp->h_name, hostaddrp);

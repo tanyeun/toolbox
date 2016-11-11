@@ -1,4 +1,6 @@
 
+.*.swp
+
 clang/bitop
 clang/func
 clang/test
