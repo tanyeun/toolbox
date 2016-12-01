@@ -1,4 +1,12 @@
+*.dSYM/
+*.o
+.*.swp
 
 clang/bitop
 clang/func
-
+clang/tcpip/a.out
+clang/tcpip/client
+clang/tcpip/serv
+clang/tcpip/test
+clang/tcpip/udpclient
+clang/tcpip/udpserver
