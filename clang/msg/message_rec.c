@@ -19,7 +19,7 @@ int main()
      */
     key = 1234;
 
-    if ((msqid = msgget(key, 0666)) < 0) {
+    if ((msqid = msgget(key, 0666 | IPC_CREAT)) < 0) {
         perror("msgget");
         exit(1);
     }

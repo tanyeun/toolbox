@@ -1,13 +1,17 @@
+#include "common.h"
 
 int register_key(key_t key, int flag)
 {
   int id = msgget( key, flag ); 
-  (void) fprintf(stderr, "\nmsgget: Calling msgget(%d,%#o)\n",key, msgflg);
+  printf("\nmsgget: Calling msgget(%d,%#o)\n",key, flag);
 
-  if ( < 0) {
+  if ( id < 0) {
       perror("msgget");
+	  return -1;
       exit(1);
   }
   else 
-   (void) fprintf(stderr,"msgget: msgget succeeded: msqid = %d\n", msqid);
+    printf("msgget: msgget succeeded: msqid = %d\n", id);
+
+  return id;
 }

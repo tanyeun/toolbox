@@ -2,11 +2,17 @@
 *.o
 .*.swp
 
-clang/bitop
-clang/func
+clang/bitop/
+clang/func/
+clang/test/
+clang/system/
+
 clang/tcpip/a.out
 clang/tcpip/client
 clang/tcpip/serv
 clang/tcpip/test
 clang/tcpip/udpclient
 clang/tcpip/udpserver
+clang/msg/message_rec
+clang/msg/message_send
+
