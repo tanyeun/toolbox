@@ -6,13 +6,14 @@
  
 int main(int argc , char *argv[])
 {
-    connection_t *conn;
+  connection_t *conn;
 	char *message, server_reply[2000];
 
-    conn = malloc(sizeof(connection_t));
+  conn = malloc(sizeof(connection_t));
 	tcp_client_init(conn, inet_addr("127.0.0.1"), 8888);
 
-    message = "GET / HTTP/1.1\r\n\r\n";
+  //message = "GET / HTTP/1.1\r\n\r\n";
+  message = "Howdy!!";
 	if( send(conn->desc , message , strlen(message) , 0) < 0)
 	{
 	  puts("Send failed");

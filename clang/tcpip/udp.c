@@ -27,6 +27,15 @@ int udp_init(connection_t *connection, in_addr_t addr, int port)
 	 * us rerun the server immediately after we kill it; 
 	 * otherwise we have to wait about 20 secs. 
 	 * Eliminates "ERROR on binding: Address already in use" error. 
+	 *   Parameters:
+	 *     1) sockfd
+	 *     2) level
+	 *          SOL_SOCKET  : communication layer
+	 *          IPPROTO_IP  : IP layer
+	 *          IPPROTO_TCP : TCP layer
+	 *     3) optname : name for the option
+	 *     4) optval  : data structure used by this option
+	 *     5) optlen  : size used by optval
 	 */
 	int optval = 1;
 	setsockopt(connection->desc, SOL_SOCKET, SO_REUSEADDR, 

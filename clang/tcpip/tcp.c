@@ -4,8 +4,8 @@ int tcp_init(connection_t *connection, in_addr_t addr, int port)
 {
   if(connection){
     //Create socket
-	//    AF_INET: IPv4
-	//    SOCK_STREAM : TCP ( UDP is SOCK_DGRAM )
+	  //    AF_INET: IPv4
+	  //    SOCK_STREAM : TCP ( UDP is SOCK_DGRAM )
     connection->desc = socket(AF_INET , SOCK_STREAM , 0);
     if (connection->desc == -1)
     {
