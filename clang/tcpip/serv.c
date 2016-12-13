@@ -65,13 +65,13 @@ void *connection_handler(void *socket_desc)
   //Get the socket descriptor
   int sock = *(int*)socket_desc;
   int read_size;
-  char *message , client_message[2000];
+  char message[256] , client_message[2000];
 
   //Send some messages to the client
-  message = "Greetings! I am your connection handler\n";
+  strcpy(message, "Greetings! I am your connection handler\n");
   write(sock , message , strlen(message));
 
-  message = "Now type something and i shall repeat what you type \n";
+  strcpy(message, "Now type something and i shall repeat what you type \n");
   write(sock , message , strlen(message));
 
   //Receive a message from client
