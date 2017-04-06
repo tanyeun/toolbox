@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 	
     int msqid;
 
-	// create queue and make it read and appendable by all
+	  // create queue and make it read and appendable by all
     int msgflg = IPC_CREAT | 0666;
 
     key_t server_key = 1234; // define server_key
