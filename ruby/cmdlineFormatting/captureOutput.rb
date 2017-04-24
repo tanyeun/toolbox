@@ -1,10 +1,12 @@
 require 'command_line_reporter'
+require 'pp'
 
 class Example
   include CommandLineReporter
 
   def run
-    suppress_output
+    suppress_output  # Indicate that the output will be save
+	                 # in capture_output
 
     table :border => true do
       row :color => 'red' do
@@ -31,3 +33,6 @@ end
 
 # All the content is now in the report variable
 report = Example.new.run
+
+print report # Nice table 
+
