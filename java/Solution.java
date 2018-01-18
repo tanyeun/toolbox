@@ -44,7 +44,7 @@ class Solution
     //String target = "abc";
     //String source = "cbeaccbachabaababcba";
     //String target = "abc";
-    List<Integer> ll = AnagramSolution.findInString(source, target);
+    List<Integer> ll = AnagramSolution.findInString1(source, target);
     System.out.println(ll.toString());
 	}
 }
