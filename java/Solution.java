@@ -38,8 +38,8 @@ class Solution
 		System.out.println();
 
 	  System.out.println("##### Anagrams #####");	
-    String source = "abbabb";
-    String target = "ab";
+    String source = "abcdabc";
+    String target = "abc";
     //String source = "cbaebabacd";
     //String target = "abc";
     //String source = "cbeaccbachabaababcba";
