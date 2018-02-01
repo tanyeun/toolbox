@@ -3,7 +3,7 @@ class TreeNode {
   TreeNode left, right;
 
   TreeNode(int data){
-	this.data = data;
-	left=right=null;
+	  this.data = data;
+	  left=right=null;
   }
 }
