@@ -1,6 +1,20 @@
 import java.util.*;
 
 class AnagramSolution {	
+  public static void testCase(String status){
+     if ( status.equals("Hide") == false ) {
+	     System.out.println("##### Anagrams #####");	
+       String source = "abcdabc";
+       String target = "abc";
+       //String source = "cbaebabacd";
+       //String target = "abc";
+       //String source = "cbeaccbachabaababcba";
+       //String target = "abc";
+       System.out.println(source+" "+target);
+       List<Integer> ll = findInString1(source, target);
+       System.out.println(ll.toString());
+     }
+  }
   static int countEqual(int[] window, int[] target){
       // Make sure window and target have the same length
       if( window.length != target.length )
@@ -24,7 +38,7 @@ class AnagramSolution {
       return counter;
   }
 
-  public static List<Integer> findInString1(String source, String target)
+  static List<Integer> findInString1(String source, String target)
   {
     List<Integer> result = new LinkedList<Integer>();
     if( target.length() > source.length() )
@@ -50,7 +64,9 @@ class AnagramSolution {
     }
     return result; 
   }
-	public static List<Integer> findInString(String source, String target)
+
+  // Still can't understand this solution
+	static List<Integer> findInString(String source, String target)
 	{
     List<Integer> result = new LinkedList<>();
     if( source.length() < target.length() )

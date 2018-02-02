@@ -1,8 +1,41 @@
 import java.util.*;
 
 class TreeSolution {
+  public static void testCase(String status){
+     if ( status.equals("Hide") == false ) {
+		   int[] arrayInt = {4, 6, 5, 7, 2, 1, 3};
+
+	     System.out.println("##### Tree Traversal #####");	
+		   TreeNode root=null;
+		   // Construct BST
+		   /*              4
+        *            /   \
+		    *           2     6
+		    *          / \   /  \
+		    *         1  3  5    7
+		    */
+		   for(int i = 0; i < arrayInt.length; i++ ){
+		     root = TreeSolution.insert(root, arrayInt[i]); 
+		   }
+		   System.out.print("inOrder: ");
+		   inOrder(root);
+		   System.out.println();
+
+		   System.out.print("postOrder: ");
+		   postOrder(root);
+		   System.out.println();
+
+		   System.out.print("preOrder: ");
+		   preOrder(root);
+		   System.out.println();
+
+		   System.out.print("levelOrder: ");
+		   levelOrder(root);
+		   System.out.println();
+     }
+  }
   // Binary Search Tree
-  public static TreeNode insert(TreeNode root, int data){
+  static TreeNode insert(TreeNode root, int data){
 	  if ( root == null )
 	    return new TreeNode(data);
     else
@@ -19,7 +52,7 @@ class TreeSolution {
 	  }
   }
 
-  public static void inOrder(TreeNode root){
+  static void inOrder(TreeNode root){
 	  if ( root != null ) {
 	    inOrder( root.left );
 	    System.out.print(root.data + " ");
@@ -27,7 +60,7 @@ class TreeSolution {
 	  }
   }
 
-  public static void postOrder(TreeNode root){
+  static void postOrder(TreeNode root){
 	  if ( root != null ) {
 	    postOrder( root.left );
 	    postOrder( root.right );
@@ -35,7 +68,7 @@ class TreeSolution {
 	  }
   }
 
-  public static void preOrder(TreeNode root){
+  static void preOrder(TreeNode root){
 	  if ( root != null ) {
 	    System.out.print(root.data + " ");
 	    preOrder( root.left );
@@ -43,7 +76,7 @@ class TreeSolution {
 	  }
   }
 
-  public static void levelOrder(TreeNode root){
+  static void levelOrder(TreeNode root){
 	LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
 	  if ( root != null ){
 	    queue.addLast(root);

@@ -9,13 +9,30 @@ class ArraySolution {
 
 	     System.out.println("##### Remove Duplicates from Sorted Array #####");	
 	     System.out.println(Arrays.toString( arrayIntSorted ));	
-       int size = ArraySolution.removeDuplicates(arrayIntSorted);
+       int size = removeDuplicates(arrayIntSorted);
        printArrayIntOfSize(size, arrayIntSorted);
+
+	     System.out.println("##### Rotate Array #####");	
+       int[] arr = {1, 2, 3, 4, 5, 6, 7};
+       System.out.println(Arrays.toString(arr));
+       int shift = 13;
+       rotateRight(arr, shift); 
+       System.out.println(Arrays.toString(arr) + " <== Rotate Right by " + shift);
+       rotateLeft(arr, shift); 
+       System.out.println(Arrays.toString(arr) + " <== Rotate Left by " + shift);
+
+	     System.out.println("##### Rotate Array 2D #####");	
+       //int[][] arr2 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+       int[][] arr2 = {{5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
+       // System.out.println(Arrays.deepToString(arr2)); // This will print the 2D array in 1D
+       print2D(arr2);
+       rotateRight2D(arr2);
+       print2D(arr2);
      }
   }
 
   // ### Remove Duplicates from Sorted Array
-  public static int removeDuplicates(int[] A) 
+  static int removeDuplicates(int[] A) 
   {
       int length = A.length;
 
@@ -37,7 +54,7 @@ class ArraySolution {
   }
 
   // Rotate right 90 degree of the given nxn array
-  public static void rotateRight2D(int[][] matrix)
+  static void rotateRight2D(int[][] matrix)
   {
     int nn = matrix[0].length;
     for(int j=0; j < nn/2; j++ ) {
@@ -51,7 +68,7 @@ class ArraySolution {
     }
   }
 
-	public static void rotateRight( int[] nums, int k )
+	static void rotateRight( int[] nums, int k )
   {
     int length = nums.length;
     if ( k > length )
@@ -66,7 +83,7 @@ class ArraySolution {
     System.arraycopy(result, 0, nums, 0, length);
   }
 
-	public static void rotateLeft( int[] nums, int k )
+	static void rotateLeft( int[] nums, int k )
   {
     int length = nums.length;
     if ( k > length )
@@ -81,7 +98,7 @@ class ArraySolution {
     System.arraycopy(result, 0, nums, 0, length);
   }
 
-  public static void print2D(int[][] matrix)
+  static void print2D(int[][] matrix)
   {
     // matrix[x][y]
     System.out.println("[");
