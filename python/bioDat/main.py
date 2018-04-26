@@ -1,49 +1,25 @@
 import pandas as pd
+import time
+
+start_time = time.time()
 
 xls = pd.ExcelFile('data1.xlsx')
+print("--- %s seconds : create file handle ---" % (time.time() - start_time))
+
 ccgd = pd.read_excel(xls, 'CCGD')
+print("--- %s seconds : Read CCGD ---" % (time.time() - start_time))
+
 snp = pd.read_excel(xls, 'SNP')
-
-#print ccgd.shape     # (# row, # col)
-#print ccgd.columns   # column names
-#print snp[['scaffold name','Gene location']][:1]
-
-snp_row_limit = 218710
-ccgd_row_limit = 7788
-
-snp_cnt = 0
-ccgd_cnt = 0
-for index, row_snd in snp.iterrows():
-  snp_cnt = snp_cnt + 1
-  found = 0
-
-  if snp_cnt == snp_row_limit :
-	break
-
-  target_name = row_snd['scaffold name']
-  target_value = row_snd['Gene location']
-
-  print snp_cnt, " : ", target_value,
-
-  for index, row in ccgd.iterrows():
-    ccgd_cnt = ccgd_cnt + 1
-    if ccgd_cnt == ccgd_row_limit :
-	  break
-  
-    if row['Chromosome/scaffold name'] == target_name and  \
-       row['Gene start (bp)'] < target_value and  \
-       row['Gene end (bp)'] > target_value :
-	  found = 1
-	  print " : ", row['Gene stable ID'], row['Gene name']
-	  row_snd['Gene stable ID'] = row['Gene stable ID']
-	  row_snd['Gene name'] = row['Gene name']
-	  
-  if found == 0 :
-	print " : N/A"
-  	row_snd['Gene stable ID'] = "N/A"
-  	row_snd['Gene name'] =  "N/A"
+print("--- %s seconds : Read SNP ---" % (time.time() - start_time))
 
 
-snp.to_excel('output.xlsx')
+result = pd.merge(snp, ccgd, on='scaffold name')
+print("--- %s seconds : Merge two tables ---" % (time.time() - start_time))
+
+result = result[(result.location >= result.Start) & (result.location < result.End)][['scaffold name', 'location', 'Gene stable ID', 'Gene name']]
+
+print("--- %s seconds : Filter result ---" % (time.time() - start_time))
+
+result.to_excel('output.xlsx')
 
 
