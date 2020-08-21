@@ -2,6 +2,7 @@
 *.o
 .*.swp
 .o
+a.out
 
 clang/bitop/
 clang/func/

@@ -5,6 +5,23 @@
 
 using namespace std;
 
+class funcObj
+{
+    public:
+        int iData;
+
+        funcObj()
+        {
+            iData = 1;
+        }
+
+        void operator()()
+        {
+            iData += 3;
+        }
+};
+
+
 void test_func()
 {
     //do something
@@ -29,13 +46,25 @@ int main( int argc, char** argv )
     
    
     // Execute function object with argument
-    thread mThread( test_func, 10 );
+    thread mThread( test_func2, 10 );
 
     // do somthing
     cout << "main thread" << endl;
 
     // wait the thread stop
     mThread.join();
+
+
+    funcObj co;
+    // copy
+    thread mThread1( co );
+    mThread1.join();
+    cout << co.iData << endl;
+
+    // reference 
+    thread mThread2( ref(co) );
+    mThread2.join();
+    cout << co.iData << endl;
 
     return 0;
 }
